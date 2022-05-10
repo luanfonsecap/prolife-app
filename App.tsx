@@ -7,6 +7,9 @@ import {
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
+import { ThemeProvider } from "styled-components";
+
+import theme from "./src/global/theme";
 
 import { Routes } from "./src/routes";
 
@@ -23,8 +26,10 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" backgroundColor="#312e38" />
-      <Routes />
+      <ThemeProvider theme={theme}>
+        <StatusBar style="light" backgroundColor="#312e38" />
+        <Routes />
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }
