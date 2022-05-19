@@ -7,7 +7,7 @@ import {
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 
 import theme from "./src/global/theme";
 
