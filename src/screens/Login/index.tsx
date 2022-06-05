@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import ProLifeLogo from "../../../assets/images/logo.png";
 import { httpClient } from "../../api/httpClient";
@@ -23,6 +24,8 @@ function Login() {
   const [name, setName] = useState("");
   const [registration, setRegistration] = useState("");
 
+  const navigation = useNavigation();
+
   function handleSubmitCredentials() {
     if (name === "") {
       Alert.alert("Por favor, digite um nome válido");
@@ -30,13 +33,17 @@ function Login() {
     }
 
     if (registration === "") {
-      Alert.alert("Por favor, digite uma matrícula válida");
+      Alert.alert("Por favor, digite uma senha válida");
       return;
     }
 
     try {
       // TODO Requisição para o backend
     } catch (error) {}
+  }
+
+  function handleNavigateToRegister() {
+    navigation.navigate("Register");
   }
 
   return (
@@ -54,15 +61,19 @@ function Login() {
       </ContainerInput>
 
       <ContainerInput>
-        <Label>Matrícula:</Label>
+        <Label>Senha:</Label>
         <Input
-          placeholder="Digite a matrícula"
+          placeholder="Digite a senha"
           onChangeText={(text) => setRegistration(text)}
         />
       </ContainerInput>
 
       <Button onPress={handleSubmitCredentials}>
         <TextButton>Iniciar</TextButton>
+      </Button>
+
+      <Button onPress={handleNavigateToRegister}>
+        <TextButton>Cadastrar</TextButton>
       </Button>
     </Container>
   );

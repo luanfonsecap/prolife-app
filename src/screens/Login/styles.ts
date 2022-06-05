@@ -37,10 +37,12 @@ export const Button = styled.TouchableOpacity`
   margin-top: 12px;
   padding: 8px 16px;
   border-radius: 16px;
+  min-width: 140px;
 `;
 
 export const TextButton = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-weight: bold;
   font-size: ${RFValue(20)}px;
+  text-align: center;
 `;
