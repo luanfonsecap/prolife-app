@@ -2,6 +2,7 @@ export type AppStackParams = {
   Home: undefined;
   Register: undefined;
   Menu: undefined;
+  Login: undefined;
 };
 
 declare global {
