@@ -4,12 +4,17 @@ import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+  margin-top: ${getStatusBarHeight()}px;
+  padding-top: 8px;
+
 `;
 
-export const Title = styled.Text`
-  font-size: ${RFValue(24)}px;
-  font-weight: 600;
+export const Image = styled.Image`
+  
+  width: 150px;
+  height: 55px;  
+  margin-left: auto;
+  margin-right: auto;
+ 
+
 `;

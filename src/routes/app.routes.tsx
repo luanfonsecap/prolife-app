@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { Home } from "../screens/Home";
+import { LogoFixa } from "../screens/LogoFixa";
 import { Login } from "../screens/Login";
 import { Menu } from "../screens/Menu";
 import { Register } from "../screens/Register";
@@ -20,7 +20,6 @@ function AppRoutes() {
       <Screen name="Login" component={Login} />
       <Screen name="Register" component={Register} />
       <Screen name="Menu" component={Menu} />
-      <Screen name="Home" component={Home} />
       <Screen name="SelectForm" component={SelectForm} />
       <Screen name="Results" component={Results} />
     </Navigator>
