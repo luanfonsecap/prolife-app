@@ -3,6 +3,9 @@ export type AppStackParams = {
   Register: undefined;
   Menu: undefined;
   Login: undefined;
+  SelectForm: undefined;
+  REsults: undefined;
+  Results: undefined;
 };
 
 declare global {

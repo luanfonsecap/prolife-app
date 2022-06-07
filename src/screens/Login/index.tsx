@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert } from "react-native";
+import { Alert, KeyboardAvoidingView, ActivityIndicator, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import ProLifeLogo from "../../../assets/images/logo.png";
@@ -14,32 +14,45 @@ import {
   TextButton,
   Title,
 } from "./styles";
+import { setItem } from "../../utils/storage";
 
-// <div></div> = <View>
-// <h1><h2><span> = <Text>
-// <input />  = <TextInput />
-// <img src="www" /> = <Image />
 
 function Login() {
-  const [name, setName] = useState("");
-  const [registration, setRegistration] = useState("");
+  const [userName, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
-  function handleSubmitCredentials() {
-    if (name === "") {
-      Alert.alert("Por favor, digite um nome válido");
+  async function handleSubmitCredentials() {
+    if (userName === "") {
+      Alert.alert("Por favor, digite um nome de usuário");
       return;
     }
 
-    if (registration === "") {
-      Alert.alert("Por favor, digite uma senha válida");
+    if (password === "") {
+      Alert.alert("Por favor, digite uma senha");
       return;
     }
+
+    const data = {
+      login: userName,
+      password,
+    }
+
+    setLoading(true);
 
     try {
-      // TODO Requisição para o backend
-    } catch (error) {}
+      const response = await httpClient.post("/login", data);
+
+      setItem('@Profile:token', response.data.access_token);
+      setLoading(false);
+
+      navigation.navigate('Menu');
+    } catch {
+      setLoading(false);
+      Alert.alert("Erro ao fazer login");
+    }
   }
 
   function handleNavigateToRegister() {
@@ -48,33 +61,44 @@ function Login() {
 
   return (
     <Container>
-      <Logo source={ProLifeLogo} />
+      <ScrollView>
 
-      <Title>Entrar</Title>
 
-      <ContainerInput>
-        <Label>Nome:</Label>
-        <Input
-          placeholder="Digite o nome"
-          onChangeText={(text) => setName(text)}
-        />
-      </ContainerInput>
+        <Logo source={ProLifeLogo} />
 
-      <ContainerInput>
-        <Label>Senha:</Label>
-        <Input
-          placeholder="Digite a senha"
-          onChangeText={(text) => setRegistration(text)}
-        />
-      </ContainerInput>
+        <Title>Entrar</Title>
+        <KeyboardAvoidingView behavior="padding">
+          <ContainerInput>
+            <Label>Nome de usuário:</Label>
+            <Input
+              placeholder="Digite seu nome de usuário"
+              onChangeText={(text) => setUsername(text)}
+            />
+          </ContainerInput>
 
-      <Button onPress={handleSubmitCredentials}>
-        <TextButton>Iniciar</TextButton>
-      </Button>
+          <ContainerInput>
+            <Label>Senha:</Label>
+            <Input
+              placeholder="Digite sua senha"
+              onChangeText={(text) => setPassword(text)}
+              secureTextEntry
+            />
+          </ContainerInput>
 
-      <Button onPress={handleNavigateToRegister}>
-        <TextButton>Cadastrar</TextButton>
-      </Button>
+          {loading && (<ActivityIndicator color="red" size="large" />)}
+
+
+          {!loading && (
+            <Button onPress={handleSubmitCredentials}>
+              <TextButton>Iniciar</TextButton>
+            </Button>
+          )}
+
+          <Button onPress={handleNavigateToRegister}>
+            <TextButton>Cadastrar</TextButton>
+          </Button>
+        </KeyboardAvoidingView>
+      </ScrollView>
     </Container>
   );
 }
