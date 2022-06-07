@@ -1,6 +1,9 @@
 import { Picker } from '@react-native-picker/picker';
 import React, { useState } from 'react';
 
+import { LogoFixa } from "../LogoFixa";
+import { SafeContainer } from '../Menu/styles';
+
 import { Button, Container, Label, TextButton } from './styles';
 
 export function SelectForm() {
@@ -11,34 +14,39 @@ export function SelectForm() {
   const [test, setTest] = useState('');
 
   return (
-    <Container>
-      <Label>Selecione o dispositivo</Label>
-      <Picker
-        style={{
-          backgroundColor: '#fff',
-        }}
-        onValueChange={(itemValue: string) =>
-          setDevice(itemValue)
-        }>
-        <Picker.Item label="Option" value="Option" />
-        <Picker.Item label="Option" value="Option" />
-      </Picker>
+    <SafeContainer>
+      <LogoFixa />
 
-      <Label>Selecione o teste</Label>
-      <Picker
-        style={{
-          backgroundColor: '#fff',
-        }}
-        onValueChange={(itemValue: string) =>
-          setTest(itemValue)
-        }>
-        <Picker.Item label="Option" value="Option" />
-        <Picker.Item label="Option" value="Option" />
-      </Picker>
+      <Container>
+        <Label>Selecione o dispositivo</Label>
+        <Picker
+          style={{
+            backgroundColor: '#fff',
+          }}
+          onValueChange={(itemValue: string) =>
+            setDevice(itemValue)
+          }>
+          <Picker.Item label="Option" value="Option" />
+          <Picker.Item label="Option" value="Option" />
+        </Picker>
 
-      <Button>
-        <TextButton>Próximo</TextButton>
-      </Button>
-    </Container>
+        <Label>Selecione o teste</Label>
+        <Picker
+          style={{
+            backgroundColor: '#fff',
+          }}
+          onValueChange={(itemValue: string) =>
+            setTest(itemValue)
+          }>
+          <Picker.Item label="Option" value="Option" />
+          <Picker.Item label="Option" value="Option" />
+        </Picker>
+
+        <Button>
+          <TextButton>Próximo</TextButton>
+        </Button>
+      </Container>
+    </SafeContainer>
+
   );
 }

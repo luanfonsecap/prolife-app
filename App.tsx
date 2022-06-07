@@ -1,3 +1,4 @@
+import React from 'react';
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
@@ -12,6 +13,8 @@ import { ThemeProvider } from "styled-components/native";
 import theme from "./src/global/theme";
 
 import { Routes } from "./src/routes";
+import { LogoFixa } from './src/screens/LogoFixa';
+import { AppContainer } from './src/global/styles';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -28,7 +31,9 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <StatusBar style="light" backgroundColor="#312e38" />
-        <Routes />
+        <AppContainer>
+          <Routes />
+        </AppContainer>
       </ThemeProvider>
     </SafeAreaProvider>
   );

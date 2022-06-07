@@ -3,10 +3,9 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   background: ${({ theme }) => theme.colors.secondary};
-  margin: 82px 24px;
   border-radius: 20px;
   padding: 24px;
-  flex: 1;
+  min-height: 400px;
 `
 
 export const Label = styled.Text`

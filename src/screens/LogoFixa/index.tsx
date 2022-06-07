@@ -6,9 +6,7 @@ import { Container, Image } from "./styles";
 import Logo from '../../../assets/images/LogoFixa.png'
 const LogoFixa = () => (
   <Container>
-    <Image source={Logo}/> 
-
-    
+    <Image source={Logo} />
   </Container>
 );
 
