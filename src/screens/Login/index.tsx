@@ -45,12 +45,23 @@ function Login() {
     try {
       const response = await httpClient.post("/login", data);
 
-      setItem('@Profile:token', response.data.access_token);
+      setItem('@Prolife:token', response.data.access_token);
       setLoading(false);
 
+      httpClient.defaults.headers.common.Authorization = `Bearer ${response.data.access_token}`
+
       navigation.navigate('Menu');
-    } catch {
+    } catch (err: any) {
       setLoading(false);
+
+      if (err.response.status === 401) {
+        Alert.alert(
+          'Usuário ou senha incorretos',
+          'Verifique suas credenciais e tente novamente.'
+        )
+        return;
+      }
+
       Alert.alert("Erro ao fazer login");
     }
   }
