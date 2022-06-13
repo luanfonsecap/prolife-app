@@ -6,6 +6,7 @@ export type AppStackParams = {
   SelectForm: undefined;
   REsults: undefined;
   Results: undefined;
+  CadastrarDispositivo: undefined;
 };
 
 declare global {

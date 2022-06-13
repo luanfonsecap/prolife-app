@@ -11,18 +11,27 @@ const Menu = () => {
         navigation.navigate('SelectForm');
     }
 
+    function handleNavigateToResults() {
+        navigation.navigate('Results');
+    }
+
+    function handleNavigateToRegisterDevice() {
+        navigation.navigate('CadastrarDispositivo');
+    }
+
+
     return (
         <SafeContainer>
             <LogoFixa />
 
             <Container>
-                <BMenu>
+                <BMenu onPress={handleNavigateToRegisterDevice}>
                     <TMenu>Cadastrar Dispositivo</TMenu>
                 </BMenu>
                 <BMenu onPress={handleNavigateToForm}>
                     <TMenu>Formulário</TMenu>
                 </BMenu>
-                <BMenu>
+                <BMenu onPress={handleNavigateToResults}>
                     <TMenu>Visualizar Resultado</TMenu>
                 </BMenu>
             </Container>
