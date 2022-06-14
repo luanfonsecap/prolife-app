@@ -8,6 +8,7 @@ import { Register } from "../screens/Register";
 import { SelectForm } from "../screens/SelectForm";
 import { Results } from "../screens/Results";
 import { CadastrarDispositivo } from "../screens/CadastrarDispositivo";
+import { Form } from "../screens/Form";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ function AppRoutes() {
       <Screen name="SelectForm" component={SelectForm} />
       <Screen name="Results" component={Results} />
       <Screen name="CadastrarDispositivo" component={CadastrarDispositivo} />
+      <Screen name="Form" component={Form} />
     </Navigator>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
@@ -15,6 +15,7 @@ import theme from "./src/global/theme";
 import { Routes } from "./src/routes";
 import { LogoFixa } from './src/screens/LogoFixa';
 import { AppContainer } from './src/global/styles';
+import { getItem } from './src/utils/storage';
 
 export default function App() {
   const [fontsLoaded] = useFonts({

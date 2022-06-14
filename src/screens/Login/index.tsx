@@ -15,6 +15,7 @@ import {
   Title,
 } from "./styles";
 import { setItem } from "../../utils/storage";
+import { parseJwt } from "../../utils/parseJwt";
 
 
 function Login() {
@@ -48,7 +49,7 @@ function Login() {
       setItem('@Prolife:token', response.data.access_token);
       setLoading(false);
 
-      httpClient.defaults.headers.common.Authorization = `Bearer ${response.data.access_token}`
+      httpClient.defaults.headers.common.Authorization = `Bearer ${response.data.access_token}`;
 
       navigation.navigate('Menu');
     } catch (err: any) {
