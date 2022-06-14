@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, ScrollView, KeyboardAvoidingView } from "react-native";
+import { Alert, ScrollView, KeyboardAvoidingView, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import ProLifeLogo from "../../../assets/images/logo.png";
@@ -21,6 +21,7 @@ function Register() {
   const [registration, setRegistration] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
@@ -111,13 +112,17 @@ function Register() {
             <Input
               placeholder="Digite uma senha"
               onChangeText={(text) => setPassword(text)}
+              secureTextEntry
             />
           </ContainerInput>
 
-          <Button onPress={handleSubmitCredentials}>
-            <TextButton>Salvar</TextButton>
-          </Button>
+          {loading && (<ActivityIndicator color="red" size="large" />)}
 
+          {!loading && (
+            <Button onPress={handleSubmitCredentials}>
+              <TextButton>Salvar</TextButton>
+            </Button>
+          )}
         </KeyboardAvoidingView>
       </ScrollView>
     </Container>

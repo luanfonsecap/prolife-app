@@ -15,7 +15,6 @@ import {
   Title,
 } from "./styles";
 import { setItem } from "../../utils/storage";
-import { parseJwt } from "../../utils/parseJwt";
 
 
 function Login() {

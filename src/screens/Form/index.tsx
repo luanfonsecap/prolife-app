@@ -50,9 +50,8 @@ export function Form({ route }: SelectFormParams) {
       })
 
       Alert.alert('Salvo com sucesso!');
-    } catch (err) {
-      console.log(err);
-
+      navigation.navigate('Home');
+    } catch {
       Alert.alert('Ocorreu um erro ao enviar o teste!', 'Tente novamente');
     } finally {
       setLoading(false);
